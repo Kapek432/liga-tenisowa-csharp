@@ -1,0 +1,28 @@
+# Build
+bin/
+obj/
+*.user
+*.suo
+
+# IDE
+.vs/
+.idea/
+*.swp
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Personal
+other/
+
+# EF Core migrations (generated)
+LigaTenisowa/Migrations/

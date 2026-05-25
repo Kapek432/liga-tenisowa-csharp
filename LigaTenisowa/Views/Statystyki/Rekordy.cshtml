@@ -1,0 +1,92 @@
+@model RekordyViewModel
+@{
+    ViewData["Title"] = "Rekordy ligi";
+}
+
+<h2>Rekordy ligi</h2>
+
+@if (ViewBag.Blad != null)
+{
+    <p style="color:gray">@ViewBag.Blad</p>
+}
+else
+{
+    <h3>W pojedynczym meczu</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Rekord</th>
+                <th>Gracz / mecz</th>
+                <th>Wartość</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Najwięcej asów w meczu</td>
+                <td><a href="/Statystyki/Profil/@Model.NajwiecejAsow.Id">@Model.NajwiecejAsow.Imie @Model.NajwiecejAsow.Nazwisko</a></td>
+                <td>@Model.MaxAsy</td>
+            </tr>
+            <tr>
+                <td>Najwięcej winnerów w meczu</td>
+                <td><a href="/Statystyki/Profil/@Model.NajwiecejWinners.Id">@Model.NajwiecejWinners.Imie @Model.NajwiecejWinners.Nazwisko</a></td>
+                <td>@Model.MaxWinners</td>
+            </tr>
+            <tr>
+                <td>Najmniej niewymuszonych błędów w meczu</td>
+                <td><a href="/Statystyki/Profil/@Model.NajmniejBledow.Id">@Model.NajmniejBledow.Imie @Model.NajmniejBledow.Nazwisko</a></td>
+                <td>@Model.MinBledow</td>
+            </tr>
+            <tr>
+                <td>Najlepszy % 1. serwisu w meczu</td>
+                <td><a href="/Statystyki/Profil/@Model.NajlepszySerwis.Id">@Model.NajlepszySerwis.Imie @Model.NajlepszySerwis.Nazwisko</a></td>
+                <td>@Model.MaxSerwisProc%</td>
+            </tr>
+            @if (Model.NajdluzszyMecz != null)
+            {
+                <tr>
+                    <td>Najdłuższy mecz</td>
+                    <td><a href="/Mecz/Szczegoly/@Model.NajdluzszyMecz.Id">@Model.NajdluzszyMecz.Gracz1.Nazwisko vs @Model.NajdluzszyMecz.Gracz2.Nazwisko</a></td>
+                    <td>@Model.MaxCzasMeczu min</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>We wszystkich meczach łącznie</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Rekord</th>
+                <th>Gracz</th>
+                <th>Wartość</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Najwięcej asów</td>
+                <td><a href="/Statystyki/Profil/@Model.LiderAsowKariery.Id">@Model.LiderAsowKariery.Imie @Model.LiderAsowKariery.Nazwisko</a></td>
+                <td>@Model.SumAsowKariery</td>
+            </tr>
+            <tr>
+                <td>Najwięcej winnerów</td>
+                <td><a href="/Statystyki/Profil/@Model.LiderWinnersKariery.Id">@Model.LiderWinnersKariery.Imie @Model.LiderWinnersKariery.Nazwisko</a></td>
+                <td>@Model.SumWinnersKariery</td>
+            </tr>
+            <tr>
+                <td>Najmniej niewymuszonych błędów</td>
+                <td><a href="/Statystyki/Profil/@Model.NajmniejBledowKariery.Id">@Model.NajmniejBledowKariery.Imie @Model.NajmniejBledowKariery.Nazwisko</a></td>
+                <td>@Model.SumBledowKariery</td>
+            </tr>
+            <tr>
+                <td>Najlepszy średni % 1. serwisu</td>
+                <td><a href="/Statystyki/Profil/@Model.NajlepszySerwisKariery.Id">@Model.NajlepszySerwisKariery.Imie @Model.NajlepszySerwisKariery.Nazwisko</a></td>
+                <td>@Model.SredniSerwisKariery%</td>
+            </tr>
+            <tr>
+                <td>Najwięcej minut na korcie</td>
+                <td><a href="/Statystyki/Profil/@Model.NajwiecejCzasuKariery.Id">@Model.NajwiecejCzasuKariery.Imie @Model.NajwiecejCzasuKariery.Nazwisko</a></td>
+                <td>@Model.SumCzasuKariery min</td>
+            </tr>
+        </tbody>
+    </table>
+}

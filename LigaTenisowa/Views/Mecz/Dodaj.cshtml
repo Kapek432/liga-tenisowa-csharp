@@ -1,0 +1,50 @@
+@model Mecz
+@{
+    ViewData["Title"] = "Dodaj mecz";
+}
+
+<h2>Dodaj mecz</h2>
+
+<form method="post">
+    <div>
+        <label>Sezon:</label>
+        <select asp-for="SezonId">
+            @foreach (var s in ViewBag.Sezony)
+            {
+                <option value="@s.Id">@s.Nazwa</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Gracz 1:</label>
+        <select asp-for="Gracz1Id">
+            @foreach (var g in ViewBag.Gracze)
+            {
+                <option value="@g.Id">@g.Imie @g.Nazwisko</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Gracz 2:</label>
+        <select asp-for="Gracz2Id">
+            @foreach (var g in ViewBag.Gracze)
+            {
+                <option value="@g.Id">@g.Imie @g.Nazwisko</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Data meczu:</label>
+        <input asp-for="DataMeczu" type="date" />
+    </div>
+    <div>
+        <label>Nawierzchnia:</label>
+        <select asp-for="Nawierzchnia" asp-items="Html.GetEnumSelectList<Nawierzchnia>()"></select>
+    </div>
+    <div>
+        <label>Format:</label>
+        <select asp-for="Format" asp-items="Html.GetEnumSelectList<Format>()"></select>
+    </div>
+    <button type="submit">Zapisz</button>
+    <a href="/Mecz">Anuluj</a>
+</form>

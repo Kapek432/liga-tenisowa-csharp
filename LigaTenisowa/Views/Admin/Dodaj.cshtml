@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Dodaj użytkownika";
+}
+
+<h2>Dodaj użytkownika</h2>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <p style="color:red">@ViewData.ModelState[""]?.Errors.FirstOrDefault()?.ErrorMessage</p>
+}
+
+<form method="post">
+    <div>
+        <label>Login:</label>
+        <input type="text" name="login" required />
+    </div>
+    <div>
+        <label>Hasło:</label>
+        <input type="password" name="haslo" required />
+    </div>
+    <div>
+        <label>Administrator:</label>
+        <input type="checkbox" name="czyAdmin" value="true" />
+    </div>
+    <div>
+        <label>Powiązany gracz (opcjonalnie):</label>
+        <select name="graczId">
+            <option value="0">- brak -</option>
+            @foreach (var g in ViewBag.Gracze)
+            {
+                <option value="@g.Id">@g.Imie @g.Nazwisko</option>
+            }
+        </select>
+    </div>
+    <button type="submit">Zapisz</button>
+    <a href="/Admin">Anuluj</a>
+</form>

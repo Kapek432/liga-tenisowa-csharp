@@ -1,0 +1,103 @@
+@model Mecz
+@{
+    ViewData["Title"] = "Karta meczu";
+    var sety = Model.Sety.OrderBy(s => s.NumerSeta).ToList();
+    var czyAdmin = Context.Session.GetString("CzyAdmin") == "True";
+    var mojGraczId = Context.Session.GetInt32("GraczId");
+}
+
+<h2>@Model.Gracz1.Imie @Model.Gracz1.Nazwisko vs @Model.Gracz2.Imie @Model.Gracz2.Nazwisko</h2>
+<p>
+    <strong>Sezon:</strong> @Model.Sezon.Nazwa |
+    <strong>Data:</strong> @Model.DataMeczu.ToString("dd.MM.yyyy") |
+    <strong>Nawierzchnia:</strong> @Model.Nawierzchnia |
+    <strong>Format:</strong> @Model.Format
+</p>
+<p>
+    <strong>Zwycięzca:</strong>
+    @(Model.Zwyciezca != null ? $"{Model.Zwyciezca.Imie} {Model.Zwyciezca.Nazwisko}" : "- nierozegrany")
+</p>
+<p>
+    <a href="/Statystyki/Profil/@Model.Gracz1.Id">Profil @Model.Gracz1.Nazwisko</a> |
+    <a href="/Statystyki/Profil/@Model.Gracz2.Id">Profil @Model.Gracz2.Nazwisko</a>
+</p>
+
+@if (sety.Any())
+{
+    <h3>Wynik (sety)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Set</th>
+                <th>@Model.Gracz1.Nazwisko</th>
+                <th>@Model.Gracz2.Nazwisko</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in sety)
+            {
+                <tr>
+                    <td>@s.NumerSeta</td>
+                    <td>
+                        @s.GemyGracz1
+                        @if (s.TiebreakGracz1.HasValue)
+                        {
+                            <text>(@s.TiebreakGracz1)</text>
+                        }
+                    </td>
+                    <td>
+                        @s.GemyGracz2
+                        @if (s.TiebreakGracz2.HasValue)
+                        {
+                            <text>(@s.TiebreakGracz2)</text>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (Model.Statystyki != null)
+{
+    var st = Model.Statystyki;
+    <h3>Statystyki meczu</h3>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>@Model.Gracz1.Nazwisko</th>
+                <th>@Model.Gracz2.Nazwisko</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Asy</td><td>@st.AsyGracz1</td><td>@st.AsyGracz2</td></tr>
+            <tr><td>Double faults</td><td>@st.DoubleFaultsGracz1</td><td>@st.DoubleFaultsGracz2</td></tr>
+            <tr><td>1. serwis %</td><td>@st.PierwszySerwisProcentGracz1%</td><td>@st.PierwszySerwisProcentGracz2%</td></tr>
+            <tr><td>Pkt na 1. serwis</td><td>@st.PktNa1SerGracz1</td><td>@st.PktNa1SerGracz2</td></tr>
+            <tr><td>Pkt na 2. serwis</td><td>@st.PktNa2SerGracz1</td><td>@st.PktNa2SerGracz2</td></tr>
+            <tr><td>Winners</td><td>@st.WinnersGracz1</td><td>@st.WinnersGracz2</td></tr>
+            <tr><td>Unforced errors</td><td>@st.UnforcedErrorsGracz1</td><td>@st.UnforcedErrorsGracz2</td></tr>
+            <tr><td>Break pointy</td><td>@st.BreakPktWykorzystaneGracz1/@st.BreakPktOkazjeGracz1</td><td>@st.BreakPktWykorzystaneGracz2/@st.BreakPktOkazjeGracz2</td></tr>
+            <tr><td>Czas meczu</td><td colspan="2">@st.CzasMeczuMin min</td></tr>
+            @if (st.Publicznosc.HasValue)
+            {
+                <tr><td>Publiczność</td><td colspan="2">@st.Publicznosc</td></tr>
+            }
+        </tbody>
+    </table>
+}
+
+<p>
+    @if (czyAdmin || mojGraczId == Model.Gracz1Id || mojGraczId == Model.Gracz2Id)
+    {
+        <a href="/Mecz/WpiszWynik/@Model.Id">Wpisz wynik</a>
+        <text> | </text>
+    }
+    @if (czyAdmin)
+    {
+        <a href="/Mecz/Edytuj/@Model.Id">Dane meczu</a>
+        <text> | </text>
+    }
+    <a href="/Mecz">Powrót do listy</a>
+</p>

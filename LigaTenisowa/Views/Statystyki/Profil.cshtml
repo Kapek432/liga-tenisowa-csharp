@@ -1,0 +1,44 @@
+@model ProfilViewModel
+@{
+    ViewData["Title"] = $"Profil - {Model.Gracz.Imie} {Model.Gracz.Nazwisko}";
+}
+
+<h2>@Model.Gracz.Imie @Model.Gracz.Nazwisko</h2>
+<p>@Model.Gracz.Kraj | @Model.Gracz.Reka ręka | @Model.Gracz.StylGry</p>
+
+<h3>Statystyki kariery</h3>
+<table>
+    <tr><td>Wygrane / Przegrane</td><td>@Model.Wygrane / @Model.Przegrane</td></tr>
+    <tr><td>Procent wygranych %</td><td>@Model.WinRatio%</td></tr>
+    <tr><td>Forma (ostatnie 5 meczów)</td><td>@Model.Forma</td></tr>
+    <tr><td>Asy</td><td>@Model.TotalAsy</td></tr>
+    <tr><td>Double faults</td><td>@Model.TotalDoubleFaults</td></tr>
+    <tr><td>Winnery</td><td>@Model.TotalWinners</td></tr>
+    <tr><td>Unforced errors</td><td>@Model.TotalUnforcedErrors</td></tr>
+    <tr><td>Średni % 1. serwisu</td><td>@Model.SredniSerwisProcent%</td></tr>
+</table>
+
+<h3>Ostatnie mecze</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Przeciwnik</th>
+            <th>Wynik</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model.OstatnieMecze)
+        {
+            var przeciwnik = m.Gracz1Id == Model.Gracz.Id ? m.Gracz2 : m.Gracz1;
+            var wynik = m.ZwyciezcaId == Model.Gracz.Id ? "W" : "L";
+            <tr>
+                <td>@m.DataMeczu.ToShortDateString()</td>
+                <td><a href="/Statystyki/Profil/@przeciwnik.Id">@przeciwnik.Imie @przeciwnik.Nazwisko</a></td>
+                <td style="color: @(wynik == "W" ? "green" : "red")">@wynik</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Ranking">Wróć do rankingu</a>

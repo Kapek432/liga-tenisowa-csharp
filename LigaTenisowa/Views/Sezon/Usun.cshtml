@@ -1,0 +1,14 @@
+@model Sezon
+@{
+    ViewData["Title"] = "Usuń sezon";
+}
+
+<h2>Czy na pewno chcesz usunąć ten sezon?</h2>
+
+<p>@Model.Nazwa (@Model.DataRozpoczecia.ToShortDateString() - @Model.DataZakonczenia.ToShortDateString())</p>
+
+<form method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit">Tak, usuń</button>
+    <a href="/Sezon">Anuluj</a>
+</form>

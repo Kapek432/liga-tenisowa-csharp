@@ -1,0 +1,44 @@
+@model IEnumerable<Gracz>
+@{
+    ViewData["Title"] = "Gracze";
+    var czyAdmin = Context.Session.GetString("CzyAdmin") == "True";
+}
+
+<h2>Gracze</h2>
+@if (czyAdmin)
+{
+    <a href="/Gracze/Dodaj">+ Dodaj gracza</a>
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Kraj</th>
+            <th>Ręka</th>
+            <th>Styl</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var g in Model)
+        {
+            <tr>
+                <td>@g.Imie</td>
+                <td>@g.Nazwisko</td>
+                <td>@g.Kraj</td>
+                <td>@g.Reka</td>
+                <td>@g.StylGry</td>
+                <td>
+                    <a href="/Statystyki/Profil/@g.Id">Profil</a>
+                    @if (czyAdmin)
+                    {
+                        <a href="/Gracze/Edytuj/@g.Id">Edytuj</a>
+                        <a href="/Gracze/Usun/@g.Id">Usuń</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

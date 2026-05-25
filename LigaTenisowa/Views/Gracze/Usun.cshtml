@@ -1,0 +1,22 @@
+@model Gracz
+@{
+    ViewData["Title"] = "Usuń gracza";
+}
+
+<h2>Czy na pewno chcesz usunąć tego gracza?</h2>
+
+<p>@Model.Imie @Model.Nazwisko (@Model.Kraj)</p>
+
+@if (ViewBag.Blad != null)
+{
+    <p class="text-danger">@ViewBag.Blad</p>
+    <a href="/Gracze">Powrót do listy</a>
+}
+else
+{
+    <form method="post">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <button type="submit">Tak, usuń</button>
+        <a href="/Gracze">Anuluj</a>
+    </form>
+}

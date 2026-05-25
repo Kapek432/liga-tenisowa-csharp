@@ -1,0 +1,51 @@
+@model IEnumerable<Mecz>
+@{
+    ViewData["Title"] = "Kalendarz meczów";
+    var czyAdmin = Context.Session.GetString("CzyAdmin") == "True";
+    var mojGraczId = Context.Session.GetInt32("GraczId");
+}
+
+<h2>Kalendarz nadchodzących meczów</h2>
+<p>Mecze bez wpisanego wyniku (zaplanowane).</p>
+
+@if (!Model.Any())
+{
+    <p>Brak zaplanowanych meczów.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Sezon</th>
+                <th>Gracz 1</th>
+                <th>Gracz 2</th>
+                <th>Nawierzchnia</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+            {
+                <tr>
+                    <td>@m.DataMeczu.ToString("dd.MM.yyyy")</td>
+                    <td>@m.Sezon.Nazwa</td>
+                    <td>@m.Gracz1.Imie @m.Gracz1.Nazwisko</td>
+                    <td>@m.Gracz2.Imie @m.Gracz2.Nazwisko</td>
+                    <td>@m.Nawierzchnia</td>
+                    <td>
+                        @if (czyAdmin || mojGraczId == m.Gracz1Id || mojGraczId == m.Gracz2Id)
+                        {
+                            <a href="/Mecz/WpiszWynik/@m.Id">Wpisz wynik</a>
+                            <text> | </text>
+                        }
+                        <a href="/Mecz/Szczegoly/@m.Id">Szczegóły</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<p><a href="/Mecz">Powrót do listy meczów</a></p>

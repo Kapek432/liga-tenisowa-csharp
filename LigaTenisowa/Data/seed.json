@@ -1,0 +1,271 @@
+{
+  "admin": {
+    "login": "admin",
+    "haslo": "admin123",
+    "apiToken": "liga-tenisowa-admin-token-demo"
+  },
+  "uzytkownicy": [
+    {
+      "login": "hubert",
+      "haslo": "hubert123",
+      "apiToken": "liga-tenisowa-hubert-token-demo",
+      "graczIndex": 5
+    }
+  ],
+  "gracze": [
+    { "imie": "Rafael", "nazwisko": "Nadal", "kraj": "Hiszpania", "reka": "Lewa", "stylGry": "Baseliner", "dataUrodzenia": "1986-06-03" },
+    { "imie": "Roger", "nazwisko": "Federer", "kraj": "Szwajcaria", "reka": "Prawa", "stylGry": "Allcourt", "dataUrodzenia": "1981-08-08" },
+    { "imie": "Novak", "nazwisko": "Djokovic", "kraj": "Serbia", "reka": "Prawa", "stylGry": "Allcourt", "dataUrodzenia": "1987-05-22" },
+    { "imie": "Carlos", "nazwisko": "Alcaraz", "kraj": "Hiszpania", "reka": "Prawa", "stylGry": "Baseliner", "dataUrodzenia": "2003-05-05" },
+    { "imie": "Jannik", "nazwisko": "Sinner", "kraj": "Włochy", "reka": "Prawa", "stylGry": "Allcourt", "dataUrodzenia": "2001-08-16" },
+    { "imie": "Hubert", "nazwisko": "Hurkacz", "kraj": "Polska", "reka": "Prawa", "stylGry": "Allcourt", "dataUrodzenia": "1997-02-11" }
+  ],
+  "sezony": [
+    {
+      "nazwa": "Sezon Wiosna 2026",
+      "dataRozpoczecia": "2026-03-01",
+      "dataZakonczenia": "2026-06-30",
+      "czyAktywny": true
+    }
+  ],
+  "mecze": [
+    {
+      "sezonIndex": 0,
+      "gracz1Index": 0,
+      "gracz2Index": 1,
+      "zwyciezcaIndex": 0,
+      "dataMeczu": "2026-03-15",
+      "nawierzchnia": "Clay",
+      "format": "Bo3",
+      "sety": [
+        { "numerSeta": 1, "gemyGracz1": 6, "gemyGracz2": 4 },
+        { "numerSeta": 2, "gemyGracz1": 7, "gemyGracz2": 6, "tiebreakGracz1": 7, "tiebreakGracz2": 4 }
+      ],
+      "statystyki": {
+        "asyGracz1": 8, "asyGracz2": 12,
+        "doubleFaultsGracz1": 2, "doubleFaultsGracz2": 1,
+        "pierwszySerwisProcentGracz1": 68.5, "pierwszySerwisProcentGracz2": 72.0,
+        "pktNa1SerGracz1": 78, "pktNa1SerGracz2": 82,
+        "pktNa2SerGracz1": 55, "pktNa2SerGracz2": 58,
+        "winnersGracz1": 32, "winnersGracz2": 38,
+        "unforcedErrorsGracz1": 18, "unforcedErrorsGracz2": 22,
+        "breakPktWykorzystaneGracz1": 4, "breakPktWykorzystaneGracz2": 2,
+        "breakPktOkazjeGracz1": 6, "breakPktOkazjeGracz2": 5,
+        "czasMeczuMin": 112,
+        "publicznosc": 12500
+      }
+    },
+    {
+      "sezonIndex": 0,
+      "gracz1Index": 1,
+      "gracz2Index": 2,
+      "zwyciezcaIndex": 1,
+      "dataMeczu": "2026-03-22",
+      "nawierzchnia": "Grass",
+      "format": "Bo5",
+      "sety": [
+        { "numerSeta": 1, "gemyGracz1": 6, "gemyGracz2": 7, "tiebreakGracz1": 5, "tiebreakGracz2": 7 },
+        { "numerSeta": 2, "gemyGracz1": 6, "gemyGracz2": 3 },
+        { "numerSeta": 3, "gemyGracz1": 4, "gemyGracz2": 6 },
+        { "numerSeta": 4, "gemyGracz1": 6, "gemyGracz2": 4 },
+        { "numerSeta": 5, "gemyGracz1": 7, "gemyGracz2": 6, "tiebreakGracz1": 7, "tiebreakGracz2": 4 }
+      ],
+      "statystyki": {
+        "asyGracz1": 22, "asyGracz2": 14,
+        "doubleFaultsGracz1": 2, "doubleFaultsGracz2": 5,
+        "pierwszySerwisProcentGracz1": 75.2, "pierwszySerwisProcentGracz2": 70.8,
+        "pktNa1SerGracz1": 85, "pktNa1SerGracz2": 76,
+        "pktNa2SerGracz1": 62, "pktNa2SerGracz2": 52,
+        "winnersGracz1": 62, "winnersGracz2": 44,
+        "unforcedErrorsGracz1": 24, "unforcedErrorsGracz2": 31,
+        "breakPktWykorzystaneGracz1": 5, "breakPktWykorzystaneGracz2": 6,
+        "breakPktOkazjeGracz1": 8, "breakPktOkazjeGracz2": 10,
+        "czasMeczuMin": 280,
+        "publicznosc": 19500
+      }
+    },
+    {
+      "sezonIndex": 0,
+      "gracz1Index": 2,
+      "gracz2Index": 0,
+      "zwyciezcaIndex": 2,
+      "dataMeczu": "2026-04-05",
+      "nawierzchnia": "Hard",
+      "format": "Bo5",
+      "sety": [
+        { "numerSeta": 1, "gemyGracz1": 6, "gemyGracz2": 4 },
+        { "numerSeta": 2, "gemyGracz1": 4, "gemyGracz2": 6 },
+        { "numerSeta": 3, "gemyGracz1": 6, "gemyGracz2": 3 },
+        { "numerSeta": 4, "gemyGracz1": 3, "gemyGracz2": 6 },
+        { "numerSeta": 5, "gemyGracz1": 6, "gemyGracz2": 4 }
+      ],
+      "statystyki": {
+        "asyGracz1": 18, "asyGracz2": 11,
+        "doubleFaultsGracz1": 4, "doubleFaultsGracz2": 7,
+        "pierwszySerwisProcentGracz1": 71.0, "pierwszySerwisProcentGracz2": 65.5,
+        "pktNa1SerGracz1": 80, "pktNa1SerGracz2": 72,
+        "pktNa2SerGracz1": 58, "pktNa2SerGracz2": 48,
+        "winnersGracz1": 58, "winnersGracz2": 47,
+        "unforcedErrorsGracz1": 32, "unforcedErrorsGracz2": 41,
+        "breakPktWykorzystaneGracz1": 8, "breakPktWykorzystaneGracz2": 5,
+        "breakPktOkazjeGracz1": 12, "breakPktOkazjeGracz2": 9,
+        "czasMeczuMin": 278,
+        "publicznosc": 22000
+      }
+    },
+    {
+      "sezonIndex": 0,
+      "gracz1Index": 3,
+      "gracz2Index": 4,
+      "zwyciezcaIndex": 3,
+      "dataMeczu": "2026-04-12",
+      "nawierzchnia": "Hard",
+      "format": "Bo3",
+      "sety": [
+        { "numerSeta": 1, "gemyGracz1": 6, "gemyGracz2": 2 },
+        { "numerSeta": 2, "gemyGracz1": 6, "gemyGracz2": 4 }
+      ],
+      "statystyki": {
+        "asyGracz1": 11, "asyGracz2": 7,
+        "doubleFaultsGracz1": 3, "doubleFaultsGracz2": 2,
+        "pierwszySerwisProcentGracz1": 69.0, "pierwszySerwisProcentGracz2": 73.5,
+        "pktNa1SerGracz1": 77, "pktNa1SerGracz2": 81,
+        "pktNa2SerGracz1": 54, "pktNa2SerGracz2": 60,
+        "winnersGracz1": 40, "winnersGracz2": 33,
+        "unforcedErrorsGracz1": 22, "unforcedErrorsGracz2": 19,
+        "breakPktWykorzystaneGracz1": 6, "breakPktWykorzystaneGracz2": 1,
+        "breakPktOkazjeGracz1": 8, "breakPktOkazjeGracz2": 4,
+        "czasMeczuMin": 90,
+        "publicznosc": 9800
+      }
+    },
+    {
+      "sezonIndex": 0,
+      "gracz1Index": 4,
+      "gracz2Index": 5,
+      "zwyciezcaIndex": 4,
+      "dataMeczu": "2026-04-18",
+      "nawierzchnia": "Hard",
+      "format": "Bo3",
+      "sety": [
+        { "numerSeta": 1, "gemyGracz1": 7, "gemyGracz2": 6, "tiebreakGracz1": 7, "tiebreakGracz2": 5 },
+        { "numerSeta": 2, "gemyGracz1": 3, "gemyGracz2": 6 },
+        { "numerSeta": 3, "gemyGracz1": 6, "gemyGracz2": 4 }
+      ],
+      "statystyki": {
+        "asyGracz1": 9, "asyGracz2": 15,
+        "doubleFaultsGracz1": 1, "doubleFaultsGracz2": 2,
+        "pierwszySerwisProcentGracz1": 74.0, "pierwszySerwisProcentGracz2": 78.5,
+        "pktNa1SerGracz1": 83, "pktNa1SerGracz2": 86,
+        "pktNa2SerGracz1": 61, "pktNa2SerGracz2": 55,
+        "winnersGracz1": 38, "winnersGracz2": 42,
+        "unforcedErrorsGracz1": 17, "unforcedErrorsGracz2": 21,
+        "breakPktWykorzystaneGracz1": 4, "breakPktWykorzystaneGracz2": 3,
+        "breakPktOkazjeGracz1": 6, "breakPktOkazjeGracz2": 6,
+        "czasMeczuMin": 137,
+        "publicznosc": 11000
+      }
+    },
+    {
+      "sezonIndex": 0,
+      "gracz1Index": 0,
+      "gracz2Index": 3,
+      "zwyciezcaIndex": 0,
+      "dataMeczu": "2026-04-25",
+      "nawierzchnia": "Clay",
+      "format": "Bo3",
+      "sety": [
+        { "numerSeta": 1, "gemyGracz1": 6, "gemyGracz2": 7, "tiebreakGracz1": 4, "tiebreakGracz2": 7 },
+        { "numerSeta": 2, "gemyGracz1": 6, "gemyGracz2": 2 },
+        { "numerSeta": 3, "gemyGracz1": 6, "gemyGracz2": 3 }
+      ],
+      "statystyki": {
+        "asyGracz1": 5, "asyGracz2": 13,
+        "doubleFaultsGracz1": 3, "doubleFaultsGracz2": 2,
+        "pierwszySerwisProcentGracz1": 66.0, "pierwszySerwisProcentGracz2": 71.5,
+        "pktNa1SerGracz1": 74, "pktNa1SerGracz2": 79,
+        "pktNa2SerGracz1": 50, "pktNa2SerGracz2": 57,
+        "winnersGracz1": 28, "winnersGracz2": 44,
+        "unforcedErrorsGracz1": 25, "unforcedErrorsGracz2": 20,
+        "breakPktWykorzystaneGracz1": 5, "breakPktWykorzystaneGracz2": 4,
+        "breakPktOkazjeGracz1": 7, "breakPktOkazjeGracz2": 6,
+        "czasMeczuMin": 161,
+        "publicznosc": 14000
+      }
+    },
+    {
+      "sezonIndex": 0,
+      "gracz1Index": 1,
+      "gracz2Index": 5,
+      "zwyciezcaIndex": 1,
+      "dataMeczu": "2026-05-02",
+      "nawierzchnia": "Grass",
+      "format": "Bo3",
+      "sety": [
+        { "numerSeta": 1, "gemyGracz1": 6, "gemyGracz2": 3 },
+        { "numerSeta": 2, "gemyGracz1": 6, "gemyGracz2": 4 }
+      ],
+      "statystyki": {
+        "asyGracz1": 16, "asyGracz2": 11,
+        "doubleFaultsGracz1": 0, "doubleFaultsGracz2": 4,
+        "pierwszySerwisProcentGracz1": 77.5, "pierwszySerwisProcentGracz2": 74.0,
+        "pktNa1SerGracz1": 88, "pktNa1SerGracz2": 80,
+        "pktNa2SerGracz1": 65, "pktNa2SerGracz2": 53,
+        "winnersGracz1": 42, "winnersGracz2": 29,
+        "unforcedErrorsGracz1": 12, "unforcedErrorsGracz2": 23,
+        "breakPktWykorzystaneGracz1": 5, "breakPktWykorzystaneGracz2": 1,
+        "breakPktOkazjeGracz1": 6, "breakPktOkazjeGracz2": 3,
+        "czasMeczuMin": 98,
+        "publicznosc": 8500
+      }
+    },
+    {
+      "sezonIndex": 0,
+      "gracz1Index": 2,
+      "gracz2Index": 4,
+      "zwyciezcaIndex": 2,
+      "dataMeczu": "2026-05-08",
+      "nawierzchnia": "Hard",
+      "format": "Bo3",
+      "sety": [
+        { "numerSeta": 1, "gemyGracz1": 6, "gemyGracz2": 2 },
+        { "numerSeta": 2, "gemyGracz1": 6, "gemyGracz2": 3 }
+      ],
+      "statystyki": {
+        "asyGracz1": 7, "asyGracz2": 10,
+        "doubleFaultsGracz1": 2, "doubleFaultsGracz2": 1,
+        "pierwszySerwisProcentGracz1": 72.5, "pierwszySerwisProcentGracz2": 76.0,
+        "pktNa1SerGracz1": 81, "pktNa1SerGracz2": 84,
+        "pktNa2SerGracz1": 56, "pktNa2SerGracz2": 59,
+        "winnersGracz1": 33, "winnersGracz2": 36,
+        "unforcedErrorsGracz1": 19, "unforcedErrorsGracz2": 16,
+        "breakPktWykorzystaneGracz1": 6, "breakPktWykorzystaneGracz2": 2,
+        "breakPktOkazjeGracz1": 7, "breakPktOkazjeGracz2": 5,
+        "czasMeczuMin": 105,
+        "publicznosc": 10200
+      }
+    },
+    {
+      "sezonIndex": 0,
+      "gracz1Index": 0,
+      "gracz2Index": 5,
+      "zwyciezcaIndex": null,
+      "dataMeczu": "2026-05-25",
+      "nawierzchnia": "Clay",
+      "format": "Bo3",
+      "sety": [],
+      "statystyki": null
+    },
+    {
+      "sezonIndex": 0,
+      "gracz1Index": 3,
+      "gracz2Index": 1,
+      "zwyciezcaIndex": null,
+      "dataMeczu": "2026-06-01",
+      "nawierzchnia": "Grass",
+      "format": "Bo5",
+      "sety": [],
+      "statystyki": null
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+@model Mecz
+@{
+    ViewData["Title"] = "Wpisz wynik";
+}
+
+<h2>Wpisz wynik: @Model.Gracz1.Imie @Model.Gracz1.Nazwisko vs @Model.Gracz2.Imie @Model.Gracz2.Nazwisko</h2>
+
+<form method="post">
+
+    <h3>Zwycięzca</h3>
+    <select name="zwyciezcaId">
+        <option value="@Model.Gracz1Id">@Model.Gracz1.Imie @Model.Gracz1.Nazwisko</option>
+        <option value="@Model.Gracz2Id">@Model.Gracz2.Imie @Model.Gracz2.Nazwisko</option>
+    </select>
+
+    <h3>Sety</h3>
+    @for (int i = 0; i < 3; i++)
+    {
+        <div>
+            <label>Set @(i + 1):</label>
+            <input type="hidden" name="sety[@i].NumerSeta" value="@(i + 1)" />
+            <input type="number" name="sety[@i].GemyGracz1" min="0" max="7" placeholder="Gemy G1" />
+            :
+            <input type="number" name="sety[@i].GemyGracz2" min="0" max="7" placeholder="Gemy G2" />
+            TB: <input type="number" name="sety[@i].TiebreakGracz1" min="0" placeholder="TB G1" />
+            :   <input type="number" name="sety[@i].TiebreakGracz2" min="0" placeholder="TB G2" />
+        </div>
+    }
+
+    <h3>Statystyki</h3>
+    <table>
+        <tr>
+            <th></th>
+            <th>@Model.Gracz1.Nazwisko</th>
+            <th>@Model.Gracz2.Nazwisko</th>
+        </tr>
+        <tr>
+            <td>Asy</td>
+            <td><input type="number" name="statystyki.AsyGracz1" min="0" /></td>
+            <td><input type="number" name="statystyki.AsyGracz2" min="0" /></td>
+        </tr>
+        <tr>
+            <td>Double Faults</td>
+            <td><input type="number" name="statystyki.DoubleFaultsGracz1" min="0" /></td>
+            <td><input type="number" name="statystyki.DoubleFaultsGracz2" min="0" /></td>
+        </tr>
+        <tr>
+            <td>1. Serwis %</td>
+            <td><input type="number" name="statystyki.PierwszySerwisProcentGracz1" min="0" max="100" step="0.1" /></td>
+            <td><input type="number" name="statystyki.PierwszySerwisProcentGracz2" min="0" max="100" step="0.1" /></td>
+        </tr>
+        <tr>
+            <td>Winners</td>
+            <td><input type="number" name="statystyki.WinnersGracz1" min="0" /></td>
+            <td><input type="number" name="statystyki.WinnersGracz2" min="0" /></td>
+        </tr>
+        <tr>
+            <td>Unforced Errors</td>
+            <td><input type="number" name="statystyki.UnforcedErrorsGracz1" min="0" /></td>
+            <td><input type="number" name="statystyki.UnforcedErrorsGracz2" min="0" /></td>
+        </tr>
+        <tr>
+            <td>Break pointy wykorzystane</td>
+            <td><input type="number" name="statystyki.BreakPktWykorzystaneGracz1" min="0" /></td>
+            <td><input type="number" name="statystyki.BreakPktWykorzystaneGracz2" min="0" /></td>
+        </tr>
+        <tr>
+            <td>Break pointy okazje</td>
+            <td><input type="number" name="statystyki.BreakPktOkazjeGracz1" min="0" /></td>
+            <td><input type="number" name="statystyki.BreakPktOkazjeGracz2" min="0" /></td>
+        </tr>
+        <tr>
+            <td>Czas meczu (min)</td>
+            <td colspan="2"><input type="number" name="statystyki.CzasMeczuMin" min="0" /></td>
+        </tr>
+        <tr>
+            <td>Publiczność</td>
+            <td colspan="2"><input type="number" name="statystyki.Publicznosc" min="0" /></td>
+        </tr>
+    </table>
+
+    <button type="submit">Zapisz wynik</button>
+    <a href="/Mecz">Anuluj</a>
+</form>

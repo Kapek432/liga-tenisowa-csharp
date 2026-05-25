@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Dokumentacja";
+}
+
+<h2>Dokumentacja projektu</h2>
+<p class="text-muted">Źródło: <code>README.md</code> w repozytorium.</p>
+
+<div class="readme-content p-4 border rounded bg-white">
+    @Html.Raw(ViewBag.ReadmeHtml)
+</div>
+
+<p class="mt-3"><a href="/">Powrót na stronę główną</a></p>

@@ -1,0 +1,27 @@
+@model Sezon
+@{
+    ViewData["Title"] = "Dodaj sezon";
+}
+
+<h2>Dodaj sezon</h2>
+
+<form method="post">
+    <div>
+        <label>Nazwa:</label>
+        <input asp-for="Nazwa" />
+    </div>
+    <div>
+        <label>Data rozpoczęcia:</label>
+        <input asp-for="DataRozpoczecia" type="date" />
+    </div>
+    <div>
+        <label>Data zakończenia:</label>
+        <input asp-for="DataZakonczenia" type="date" />
+    </div>
+    <div>
+        <label>Aktywny:</label>
+        <input asp-for="CzyAktywny" type="checkbox" />
+    </div>
+    <button type="submit">Zapisz</button>
+    <a href="/Sezon">Anuluj</a>
+</form>

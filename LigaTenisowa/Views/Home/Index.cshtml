@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Strona główna";
+}
+
+<div class="text-center mb-4">
+    <h1 class="display-5">Amatorska Liga Tenisowa</h1>
+    <p class="lead">System zarządzania sezonami, graczami, meczami i rankingiem.</p>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Gracze i mecze</h5>
+                <p class="card-text">CRUD graczy, terminarz meczów, wpisywanie wyników i statystyk.</p>
+                <a href="/Gracze" class="btn btn-outline-primary btn-sm">Gracze</a>
+                <a href="/Mecz" class="btn btn-outline-primary btn-sm">Mecze</a>
+                <a href="/Mecz/Kalendarz" class="btn btn-outline-primary btn-sm">Kalendarz</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Ranking i statystyki</h5>
+                <p class="card-text">Tabela sezonu, ranking all-time, profile, H2H i rekordy.</p>
+                <a href="/Ranking" class="btn btn-outline-primary btn-sm">Ranking</a>
+                <a href="/Statystyki/HeadToHead" class="btn btn-outline-primary btn-sm">Head to Head</a>
+                <a href="/Statystyki/Rekordy" class="btn btn-outline-primary btn-sm">Rekordy</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Administracja</h5>
+                <p class="card-text">Zarządzanie użytkownikami i tokenami API do klienta konsolowego.</p>
+                @if (Context.Session.GetString("CzyAdmin") == "True")
+                {
+                    <a href="/Admin" class="btn btn-warning btn-sm">Panel admina</a>
+                }
+                else
+                {
+                    <span class="text-muted">Dostępne dla administratora</span>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+@model Sezon
+@{
+    ViewData["Title"] = $"Sezon - {Model.Nazwa}";
+    var mecze = (IEnumerable<Mecz>)ViewBag.Mecze;
+    var rozegrane = mecze.Where(m => m.ZwyciezcaId != null).ToList();
+    var czyAdmin = Context.Session.GetString("CzyAdmin") == "True";
+}
+
+<h2>@Model.Nazwa</h2>
+<p>
+    @Model.DataRozpoczecia.ToString("dd.MM.yyyy") - @Model.DataZakonczenia.ToString("dd.MM.yyyy")
+    @if (Model.CzyAktywny)
+    {
+        <span class="badge bg-success">Aktywny</span>
+    }
+</p>
+<p><strong>Meczów w sezonie:</strong> @mecze.Count() (rozegranych: @rozegrane.Count)</p>
+
+<h3>Mecze</h3>
+@if (!mecze.Any())
+{
+    <p>Brak meczów w tym sezonie.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Gracz 1</th>
+                <th>Gracz 2</th>
+                <th>Zwycięzca</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in mecze)
+            {
+                <tr>
+                    <td>@m.DataMeczu.ToShortDateString()</td>
+                    <td>@m.Gracz1.Imie @m.Gracz1.Nazwisko</td>
+                    <td>@m.Gracz2.Imie @m.Gracz2.Nazwisko</td>
+                    <td>@(m.Zwyciezca != null ? $"{m.Zwyciezca.Imie} {m.Zwyciezca.Nazwisko}" : "-")</td>
+                    <td><a href="/Mecz/Szczegoly/@m.Id">Szczegóły</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<p>
+    @if (czyAdmin)
+    {
+        <a href="/Sezon/Edytuj/@Model.Id">Edytuj sezon</a>
+        <text> | </text>
+    }
+    <a href="/Sezon">Powrót</a>
+</p>

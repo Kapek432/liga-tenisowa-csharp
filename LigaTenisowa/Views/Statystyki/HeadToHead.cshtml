@@ -1,0 +1,59 @@
+@model HeadToHeadViewModel
+@{
+    ViewData["Title"] = "Head to Head";
+}
+
+<h2>Head to Head</h2>
+
+<form method="post">
+    <select name="gracz1Id">
+        @foreach (var g in ViewBag.Gracze)
+        {
+            <option value="@g.Id">@g.Imie @g.Nazwisko</option>
+        }
+    </select>
+    vs
+    <select name="gracz2Id">
+        @foreach (var g in ViewBag.Gracze)
+        {
+            <option value="@g.Id">@g.Imie @g.Nazwisko</option>
+        }
+    </select>
+    <button type="submit">Porównaj</button>
+</form>
+
+@if (ViewBag.Blad != null)
+{
+    <p style="color:red">@ViewBag.Blad</p>
+}
+
+@if (Model?.Mecze != null)
+{
+    <h3>@Model.Gracz1.Imie @Model.Gracz1.Nazwisko vs @Model.Gracz2.Imie @Model.Gracz2.Nazwisko</h3>
+    <p>
+        <strong>@Model.WygraneGracz1</strong> - <strong>@Model.WygraneGracz2</strong>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Zwycięzca</th>
+                <th>Sety</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model.Mecze)
+            {
+                var wynikSetow = string.Join(", ", m.Sety
+                    .OrderBy(s => s.NumerSeta)
+                    .Select(s => $"{s.GemyGracz1}:{s.GemyGracz2}"));
+                <tr>
+                    <td>@m.DataMeczu.ToShortDateString()</td>
+                    <td>@(m.Zwyciezca != null ? $"{m.Zwyciezca.Imie} {m.Zwyciezca.Nazwisko}" : "-")</td>
+                    <td>@wynikSetow</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

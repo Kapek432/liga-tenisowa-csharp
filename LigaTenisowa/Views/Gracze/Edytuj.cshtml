@@ -1,0 +1,36 @@
+@model Gracz
+@{
+    ViewData["Title"] = "Edytuj gracza";
+}
+
+<h2>Edytuj gracza</h2>
+
+<form method="post">
+    <input asp-for="Id" type="hidden" />
+    <div>
+        <label>Imię:</label>
+        <input asp-for="Imie" />
+    </div>
+    <div>
+        <label>Nazwisko:</label>
+        <input asp-for="Nazwisko" />
+    </div>
+    <div>
+        <label>Data urodzenia:</label>
+        <input asp-for="DataUrodzenia" type="date" />
+    </div>
+    <div>
+        <label>Kraj:</label>
+        <input asp-for="Kraj" />
+    </div>
+    <div>
+        <label>Ręka:</label>
+        <select asp-for="Reka" asp-items="Html.GetEnumSelectList<Reka>()"></select>
+    </div>
+    <div>
+        <label>Styl gry:</label>
+        <select asp-for="StylGry" asp-items="Html.GetEnumSelectList<StylGry>()"></select>
+    </div>
+    <button type="submit">Zapisz</button>
+    <a href="/Gracze">Anuluj</a>
+</form>

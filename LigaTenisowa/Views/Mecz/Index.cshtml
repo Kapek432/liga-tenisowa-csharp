@@ -1,0 +1,51 @@
+@model IEnumerable<Mecz>
+@{
+    ViewData["Title"] = "Mecze";
+    var czyAdmin = Context.Session.GetString("CzyAdmin") == "True";
+    var mojGraczId = Context.Session.GetInt32("GraczId");
+}
+
+<h2>Mecze</h2>
+@if (czyAdmin)
+{
+    <a href="/Mecz/Dodaj">+ Dodaj mecz</a>
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Sezon</th>
+            <th>Gracz 1</th>
+            <th>Gracz 2</th>
+            <th>Zwycięzca</th>
+            <th>Nawierzchnia</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.DataMeczu.ToShortDateString()</td>
+                <td>@m.Sezon.Nazwa</td>
+                <td>@m.Gracz1.Imie @m.Gracz1.Nazwisko</td>
+                <td>@m.Gracz2.Imie @m.Gracz2.Nazwisko</td>
+                <td>@(m.Zwyciezca != null ? $"{m.Zwyciezca.Imie} {m.Zwyciezca.Nazwisko}" : "- nierozegrany")</td>
+                <td>@m.Nawierzchnia</td>
+                <td>
+                    <a href="/Mecz/Szczegoly/@m.Id">Szczegóły</a>
+                    @if (czyAdmin || mojGraczId == m.Gracz1Id || mojGraczId == m.Gracz2Id)
+                    {
+                        <a href="/Mecz/WpiszWynik/@m.Id">Wpisz wynik</a>
+                    }
+                    @if (czyAdmin)
+                    {
+                        <a href="/Mecz/Edytuj/@m.Id">Dane meczu</a>
+                        <a href="/Mecz/Usun/@m.Id">Usuń</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

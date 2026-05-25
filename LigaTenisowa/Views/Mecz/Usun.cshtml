@@ -1,0 +1,17 @@
+@model Mecz
+@{
+    ViewData["Title"] = "Usuń mecz";
+}
+
+<h2>Czy na pewno chcesz usunąć ten mecz?</h2>
+
+<p>
+    @Model.Gracz1.Imie @Model.Gracz1.Nazwisko vs @Model.Gracz2.Imie @Model.Gracz2.Nazwisko<br />
+    @Model.DataMeczu.ToShortDateString() - @Model.Sezon.Nazwa
+</p>
+
+<form method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit">Tak, usuń</button>
+    <a href="/Mecz">Anuluj</a>
+</form>

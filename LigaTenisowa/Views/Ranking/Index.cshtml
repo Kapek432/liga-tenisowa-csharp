@@ -1,0 +1,42 @@
+@model IEnumerable<RankingViewModel>
+@{
+    ViewData["Title"] = "Ranking sezonu";
+}
+
+<h2>Ranking - @ViewBag.Sezon</h2>
+<a href="/Ranking/AllTime">Zobacz ranking all-time</a>
+
+@if (ViewBag.Blad != null)
+{
+    <p style="color:red">@ViewBag.Blad</p>
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Gracz</th>
+            <th>Wygrane</th>
+            <th>Przegrane</th>
+            <th>Win %</th>
+            <th>Punkty</th>
+            <th>Forma (5)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int i = 1;}
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td><a href="/Statystyki/Profil/@r.Gracz.Id">@r.Gracz.Imie @r.Gracz.Nazwisko</a></td>
+                <td>@r.Wygrane</td>
+                <td>@r.Przegrane</td>
+                <td>@r.WinRatio%</td>
+                <td><strong>@r.Punkty</strong></td>
+                <td>@r.Forma</td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>

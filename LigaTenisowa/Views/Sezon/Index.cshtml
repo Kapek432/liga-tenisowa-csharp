@@ -1,0 +1,42 @@
+@model IEnumerable<Sezon>
+@{
+    ViewData["Title"] = "Sezony";
+    var czyAdmin = Context.Session.GetString("CzyAdmin") == "True";
+}
+
+<h2>Sezony</h2>
+@if (czyAdmin)
+{
+    <a href="/Sezon/Dodaj">+ Dodaj sezon</a>
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Od</th>
+            <th>Do</th>
+            <th>Status</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Nazwa</td>
+                <td>@s.DataRozpoczecia.ToShortDateString()</td>
+                <td>@s.DataZakonczenia.ToShortDateString()</td>
+                <td>@(s.CzyAktywny ? "Aktywny" : "Zakończony")</td>
+                <td>
+                    <a href="/Sezon/Szczegoly/@s.Id">Szczegóły</a>
+                    @if (czyAdmin)
+                    {
+                        <a href="/Sezon/Edytuj/@s.Id">Edytuj</a>
+                        <a href="/Sezon/Usun/@s.Id">Usuń</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

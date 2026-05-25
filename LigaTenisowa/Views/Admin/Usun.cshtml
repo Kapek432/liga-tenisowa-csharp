@@ -1,0 +1,19 @@
+@model Uzytkownik
+@{
+    ViewData["Title"] = "Usuń użytkownika";
+}
+
+<h2>Czy na pewno chcesz usunąć tego użytkownika?</h2>
+
+<p>Login: <strong>@Model.Login</strong></p>
+<p>Rola: @(Model.CzyAdmin ? "Administrator" : "Użytkownik")</p>
+@if (Model.Gracz != null)
+{
+    <p>Powiązany gracz: @Model.Gracz.Imie @Model.Gracz.Nazwisko</p>
+}
+
+<form method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit">Tak, usuń</button>
+    <a href="/Admin">Anuluj</a>
+</form>

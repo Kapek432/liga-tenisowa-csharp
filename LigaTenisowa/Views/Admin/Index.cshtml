@@ -1,0 +1,62 @@
+@model IEnumerable<Uzytkownik>
+@{
+    ViewData["Title"] = "Panel administratora";
+}
+
+<h2>Użytkownicy systemu</h2>
+<a href="/Admin/Dodaj" class="btn btn-primary btn-sm mb-3">+ Dodaj użytkownika</a>
+
+@if (TempData["Blad"] != null)
+{
+    <p class="text-danger">@TempData["Blad"]</p>
+}
+@if (TempData["Info"] != null)
+{
+    <p class="text-success">@TempData["Info"]</p>
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Login</th>
+            <th>Rola</th>
+            <th>Powiązany gracz</th>
+            <th>API Token</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Login</td>
+                <td>@(u.CzyAdmin ? "Administrator" : "Użytkownik")</td>
+                <td>@(u.Gracz != null ? $"{u.Gracz.Imie} {u.Gracz.Nazwisko}" : "-")</td>
+                <td>
+                    <code id="token-@u.Id">@u.ApiToken</code>
+                    <button type="button" class="btn btn-sm btn-outline-secondary ms-1"
+                            onclick="copyToken('token-@u.Id', this)">Kopiuj</button>
+                </td>
+                <td>
+                    <a href="/Admin/ResetujToken/@u.Id">Reset tokenu</a> |
+                    <a href="/Admin/Usun/@u.Id">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+<script>
+function copyToken(elementId, btn) {
+    var text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(function () {
+        var orig = btn.innerText;
+        btn.innerText = 'Skopiowano!';
+        setTimeout(function () { btn.innerText = orig; }, 1500);
+    }).catch(function () {
+        alert('Nie udało się skopiować tokenu.');
+    });
+}
+</script>
+}

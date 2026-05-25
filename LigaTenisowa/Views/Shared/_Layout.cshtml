@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Liga Tenisowa</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Liga Tenisowa</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navMenu">
+                    @if (Context.Session.GetString("Login") != null)
+                    {
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Gracze">Gracze</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Sezon">Sezony</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Mecz">Mecze</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Mecz/Kalendarz">Kalendarz</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                    Statystyki
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/Ranking">Ranking sezonu</a></li>
+                                    <li><a class="dropdown-item" href="/Ranking/AllTime">Ranking All-Time</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="/Statystyki/HeadToHead">Head to Head</a></li>
+                                    <li><a class="dropdown-item" href="/Statystyki/Rekordy">Rekordy ligi</a></li>
+                                </ul>
+                            </li>
+                            @if (Context.Session.GetString("CzyAdmin") == "True")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Admin">Panel admina</a>
+                                </li>
+                            }
+                        </ul>
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <span class="nav-link text-light">
+                                    @Context.Session.GetString("Login")
+                                </span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Auth/Logout">Wyloguj</a>
+                            </li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-4">
+        @if (TempData["Blad"] != null)
+        {
+            <p class="text-danger">@TempData["Blad"]</p>
+        }
+        @if (TempData["Info"] != null)
+        {
+            <p class="text-success">@TempData["Info"]</p>
+        }
+        @RenderBody()
+    </div>
+
+    <footer class="container py-3 text-muted border-top mb-3">
+        <small>Amatorska Liga Tenisowa - <a href="/Home/Dokumentacja">README.md</a></small>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
